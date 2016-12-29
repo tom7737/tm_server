@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/javafile/!svn/ver/67/server20150507/config
+END
+sqlmap-config-tuxing.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/javafile/!svn/ver/67/server20150507/config/sqlmap-config-tuxing.xml
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/javafile/!svn/ver/68/server20150507/config/application.properties
+END
+db.properties
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/javafile/!svn/ver/67/server20150507/config/db.properties
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/javafile/!svn/ver/68/server20150507/config/log4j.xml
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/javafile/!svn/ver/68/server20150507/config/applicationContext.xml
+END
+dispatcher-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/javafile/!svn/ver/67/server20150507/config/dispatcher-servlet.xml
+END
+sqlmap-config-image.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/javafile/!svn/ver/67/server20150507/config/sqlmap-config-image.xml
+END
+sqlmap-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/javafile/!svn/ver/67/server20150507/config/sqlmap-config.xml
+END

@@ -1,0 +1,4 @@
+cache.server.url=127.0.0.1:11211
+#expire seconds
+#static.page.root.dir== no use
+static.page.root.dir=D:/workspace/server/WebContent

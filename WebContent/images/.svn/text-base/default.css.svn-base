@@ -1,0 +1,277 @@
+BODY {
+	FONT-SIZE: 12px;
+	MARGIN: 0px;
+	COLOR: #000000;
+	FONT-FAMILY: "宋体";
+	BACKGROUND-COLOR: #ffffff;
+	line-height: 120%;
+}
+
+TD {
+	FONT-SIZE: 12px;
+	line-height: 120%;
+}
+
+A {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+A:link {
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+	padding: 0px;
+}
+
+A:hover {
+	COLOR: #336699;
+	text-decoration: none;
+}
+
+INPUT {
+	BORDER-RIGHT: #666666 1px solid;
+	BORDER-TOP: #cccccc 1px solid;
+	BORDER-LEFT: #cccccc 1px solid;
+	BORDER-BOTTOM: #666666 1px solid
+}
+
+.hand {
+	CURSOR: hand
+}
+
+.button {
+	BORDER-RIGHT: #1c2637 1px solid;
+	BORDER-TOP: #1c2637 1px solid;
+	FONT-SIZE: 9pt;
+	BORDER-LEFT: #1c2637 1px solid;
+	COLOR: #000000;
+	BORDER-BOTTOM: #1c2637 1px solid;
+	BACKGROUND-COLOR: #ffffff
+}
+
+.red {
+	font-size: 12px;
+	color: #FF0000;
+}
+
+.line {
+	text-decoration: line-through;
+}
+
+.Font_Line {
+	font-size: 12px;
+	text-decoration: underline;
+	font-weight: normal;
+	color: #000000;
+}
+
+a.blue {
+	color: #0000FF;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.blue_add {
+	font-size: 12px;
+	color: #0000FF;
+	text-decoration: none;
+}
+
+.blue_Trip {
+	font-size: 12px;
+	color: #0000FF;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+a.blue:link {
+	font-size: 12px;
+	color: #0000FF;
+	text-decoration: none;
+}
+
+a.blue:hover {
+	font-size: 12px;
+	color: #0000FF;
+	text-decoration: underline;
+}
+
+.Radio {
+	border: 1px none #FFFFFF;
+}
+
+.info_left {
+	padding-left: 10px;
+	padding-top: 10px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #0066FF;
+	border-bottom-color: #0066FF;
+	border-left-color: #0066FF;
+	padding-right: 10px;
+}
+
+.info_left4 {
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #0066FF;
+	border-bottom-color: #0066FF;
+	border-left-color: #0066FF;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+}
+
+.bk {
+	border: 1px solid #FFFFFF;
+}
+
+.bk_blue {
+	border: 1px none #6699FF;
+}
+
+.font1 {
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.Font_List {
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.bold {
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+
+.blue_bold {
+	font-weight: bold;
+	color: #6699FF;
+	text-decoration: underline;
+}
+
+.blue_font {
+	line-height: 22px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #6699FF;
+	text-decoration: underline;
+}
+
+.Capital_Font {
+	font-size: 12px;
+	color: #CC3300;
+	text-decoration: none;
+}
+
+.Area {
+	padding: 100px;
+}
+
+a.aa {
+	color: #993300;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+a.aa:link {
+	font-size: 12px;
+	color: #993300;
+	text-decoration: none;
+}
+
+a.aa:hover {
+	font-size: 12px;
+	color: #993300;
+	text-decoration: underline;
+}
+
+a.bb {
+	color: #FF0000;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+a.bb:link {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+
+a.bb:hover {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+.SC_bk {
+	border: 1px solid #3979B6;
+}
+
+a.green {
+	color: #33CC00;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+a.green:link {
+	font-size: 12px;
+	color: #33CC00;
+	text-decoration: none;
+}
+
+a.green:hover {
+	font-size: 12px;
+	color: #33CC00;
+	text-decoration: underline;
+}
+
+a.yellow {
+	color: #FFFF00;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+a.yellow:link {
+	font-size: 12px;
+	color: #FFFF00;
+	text-decoration: none;
+}
+
+a.yellow:hover {
+	font-size: 12px;
+	color: #FFFF00;
+	text-decoration: underline;
+}
+
+a.white {
+	color: #FFFFFF;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+a.white:link {
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+a.white:hover {
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+}

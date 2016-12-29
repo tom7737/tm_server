@@ -1,0 +1,44 @@
+10
+
+dir
+67
+http://2003server:443/svn/javafile/server20150507
+http://2003server:443/svn/javafile
+
+
+
+2015-05-07T04:42:57.906250Z
+67
+tom
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+4ac28a9e-42db-7049-b9ae-e2053010166e
+
+
+
+
+
+
+0
+
+WebContent
+dir
+
+config
+dir
+
+src
+dir
+

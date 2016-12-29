@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjgt.ms.dao.TggqhDao">
+	<resultMap type="tggqh" id="tggqhResultMap">
+		<result property="fdate" column="fdate" />
+		<result property="fggq" column="fggq" />
+		<result property="fcsggq" column="fcsggq" />
+		<result property="fndqh" column="fndqh" />
+	</resultMap>
+	<select id="getByCustom" parameterType="queryUtil" resultType="tggqh"
+		resultMap="tggqhResultMap">
+		select ${result} from ${table}
+		<if test="field != null and '' != field">
+			where ${field} ${symbol} ${parameter}
+		</if>
+		<if test="other != null and '' != other">
+			${other}
+		</if>
+		<if test="groupParameter != null and '' != groupParameter">
+			group by ${groupParameter}
+		</if>
+		<if test="orderParameter != null and '' != orderParameter">
+			order by ${orderParameter}
+		</if>
+	</select>
+	<select id="getByFdate" parameterType="java.lang.String" resultType="tggqh" resultMap="tggqhResultMap">
+	 select top 1  * from tggqh where CONVERT(int, #{_parameter}) -convert(int,fdate)  between  -3 and 3; 
+	</select>
+</mapper>

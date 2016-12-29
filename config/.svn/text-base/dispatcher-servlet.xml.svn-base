@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:oxm="http://www.springframework.org/schema/oxm" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+						http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/oxm
+						http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
+
+	<!-- ======================配置内部资源视图解释器======================start -->
+	<bean id="internalResourceViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/" p:suffix=".jsp" p:order="0" />
+	<!-- ======================配置内部资源视图解释器======================end -->
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="basePackage" value="com.bjgt.ms.dao" />
+		<property name="sqlSessionFactory" ref="SqlSessionMapClient" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="basePackage" value="com.bjgt.ms.daoimage" />
+		<property name="sqlSessionFactory" ref="imageSqlSessionMapClient" />
+	</bean>
+
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="basePackage" value="com.bjgt.ms.daotuxing" />
+		<property name="sqlSessionFactory" ref="tuxingSqlSessionMapClient" />
+	</bean>
+	<!-- ======================配置自动扫描的包名======================start -->
+	<context:component-scan base-package="com.bjgt.ms">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<!-- ======================配置自动扫描的包名======================end -->
+
+	<!-- 默认的注解映射的支持 -->
+	<mvc:annotation-driven />
+
+	<!-- mvc拦截器2 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 需要拦截的路径 -->
+			<mvc:mapping path="/**" />
+			<!-- 不包含的 -->
+			<mvc:exclude-mapping path="*/login" />
+			<mvc:exclude-mapping path="user/login" />
+			<mvc:exclude-mapping path="login" />
+			<!-- 指定拦截器类路径 -->
+			<bean class="com.bjgt.ms.interceptor.CommonInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- ======================配置上传文件======================start -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>1073741824</value>
+		</property>
+	</bean>
+	<!-- ======================配置上传文件======================end -->
+
+	<!-- 总错误处理 -->
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView">
+			<value>/common/500</value>
+		</property>
+		<property name="defaultStatusCode">
+			<value>500</value>
+		</property>
+		<!-- 异常记录到日志 -->
+		<property name="warnLogCategory">
+			<value>
+				org.springframework.web.servlet.handler.SimpleMappingExceptionResolver
+			</value>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<ref bean="mappingJacksonHttpMessageConverter" />
+		</property>
+	</bean>
+
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+
+
+
+
+
+	<!-- ==============================配置事务==============================start -->
+	<!--配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!--配置哪些方法,什么情况下需要回滚 -->
+	<tx:advice id="serviceAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!--当代理的service层中的方法抛出异常的时候才回滚,必须加rollback-for参数 -->
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="refresh*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="remove*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="cancel*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<!--除了上面标识的方法,其他方法全是只读方法 -->
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置哪些类的方法需要进行事务管理 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="servicePointcut"
+			expression="execution(* com.bjgt.ms.service.impl.*.*(..))" />
+		<aop:advisor pointcut-ref="servicePointcut" advice-ref="serviceAdvice" />
+	</aop:config>
+	<!-- ==============================配置事务==============================end -->
+</beans>

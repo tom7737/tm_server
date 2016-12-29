@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjgt.ms.dao.TtmWellDao">
+	<resultMap type="ttmWell" id="ttmWellResultMap">
+		<id property="ftmid" column="ftmid" />
+		<result property="ftmtypeid" column="ftmtypeid" />
+		<result property="ftmchin" column="ftmchin" />
+		<result property="ftmchin2" column="ftmchin2" />
+		<result property="ftmchin3" column="ftmchin3" />
+		<result property="fsqr1" column="fsqr1" />
+		<result property="fsysp" column="fsysp" />
+		<result property="frdrq" column="frdrq" />
+		<result property="frdlx" column="frdlx" />
+		<result property="farea" column="farea" />
+		<result property="fbz" column="fbz" />
+		<result property="fsqdate" column="fsqdate" />
+		<result property="frdqt" column="frdqt" />
+		<result property="ftmeng" column="ftmeng" />
+		<result property="ftmpy" column="ftmpy" />
+		<result property="ftmhead" column="ftmhead" />
+		<result property="ftmsz" column="ftmsz" />
+		<result property="ftmjpm" column="ftmjpm" />
+		<result property="fspzb" column="fspzb" />
+		<result property="fbguserId" column="fbguserId" />
+		<result property="ftmszalb" column="ftmszalb" />
+		<result property="fggq" column="fggq" />
+	</resultMap>
+	<select id="getByCustom" parameterType="queryUtil" resultType="ttmWell"
+		resultMap="ttmWellResultMap">
+		select ${result} from ${table}
+		<if test="field != null and '' != field">
+			where ${field} ${symbol} ${parameter}
+		</if>
+		<if test="other != null and '' != other">
+			${other}
+		</if>
+		<if test="groupParameter != null and '' != groupParameter">
+			group by ${groupParameter}
+		</if>
+		<if test="orderParameter != null and '' != orderParameter">
+			order by ${orderParameter}
+		</if>
+	</select>
+</mapper>

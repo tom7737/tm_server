@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjgt.ms.dao.TspdmImageDao">
+	<resultMap type="tspdmImage" id="tspdmImageResultMap">
+		<id property="pageno" column="pageno" />
+		<result property="spimage" column="spimage" />
+	</resultMap>
+	<select id="get" parameterType="java.lang.String" resultType="tspdmImage"
+		resultMap="tspdmImageResultMap">
+		select * from tspdmimage where pageno
+		= #{_parameter}
+	</select>
+</mapper>

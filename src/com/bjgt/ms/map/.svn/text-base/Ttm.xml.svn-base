@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjgt.ms.dao.TtmDao">
+	<resultMap type="ttm" id="ttmResultMap">
+		<id property="ftmid" column="ftmid" />
+		<result property="fggq" column="fggq" />
+		<result property="fbgq" column="fbgq" />
+		<result property="ftmchin" column="ftmchin" />
+		<result property="ftmeng" column="ftmeng" />
+		<result property="ftmpy" column="ftmpy" />
+		<result property="ftmhead" column="ftmhead" />
+		<result property="ftmsz" column="ftmsz" />
+		<result property="fsqdate" column="fsqdate" />
+		<result property="fzcdate" column="fzcdate" />
+		<result property="fsqr1" column="fsqr1" />
+		<result property="fbgqh1" column="fbgqh1" />
+		<result property="fbgdate1" column="fbgdate1" />
+		<result property="fbgbz1" column="fbgbz1" />
+		<result property="fsqr2" column="fsqr2" />
+		<result property="fbgqh2" column="fbgqh2" />
+		<result property="fbgdate2" column="fbgdate2" />
+		<result property="fbgbz2" column="fbgbz2" />
+		<result property="fsqr3" column="fsqr3" />
+		<result property="fbgqh3" column="fbgqh3" />
+		<result property="fbgdate3" column="fbgdate3" />
+		<result property="fbgbz3" column="fbgbz3" />
+		<result property="faddr" column="faddr" />
+		<result property="fbgqh4" column="fbgqh4" />
+		<result property="fbgdate4" column="fbgdate4" />
+		<result property="fdlzz" column="fdlzz" />
+		<result property="fbz" column="fbz" />
+		<result property="fsysp" column="fsysp" />
+		<result property="ftmtypeid" column="ftmtypeid" />
+		<result property="fuserId" column="fuserId" />
+		<result property="fbguserId" column="fbguserId" />
+		<result property="fxguserId" column="fxguserId" />
+		<result property="ftmjpm" column="ftmjpm" />
+		<result property="farea" column="farea" />
+		<result property="fbgym1" column="fbgym1" />
+		<result property="fbgym2" column="fbgym2" />
+		<result property="fbgym3" column="fbgym3" />
+		<result property="fbgym4" column="fbgym4" />
+		<result property="fcsym" column="fcsym" />
+		<result property="fzcym" column="fzcym" />
+		<result property="fspzb" column="fspzb" />
+		<result property="fjzdate" column="fjzdate" />
+		<result property="fcsdate" column="fcsdate" />
+		<result property="fzcq" column="fzcq" />
+		<result property="fsblx" column="fsblx" />
+		<result property="fzdys" column="fzdys" />
+		<result property="fsfgy" column="fsfgy" />
+		<result property="ftmszalb" column="ftmszalb" />
+	</resultMap>
+		<select id="getByFtmid" parameterType="ttm" resultType="ttm"
+		resultMap="ttmResultMap" >
+		select * from ttm${tmlb} where ftmid = #{ftmid}
+	</select>
+</mapper>
