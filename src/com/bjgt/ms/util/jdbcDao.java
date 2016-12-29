@@ -33,6 +33,7 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 import com.bjgt.ms.entity.Ttm;
+import com.bjgt.ms.entity.TtmNew;
 import com.bjgt.ms.entity.test.JoUser;
 import com.bjgt.ms.entity.test.gongsi;
 import com.bjgt.ms.entity.test.ttmtmlp;
@@ -50,18 +51,64 @@ public class jdbcDao {
 		// lingzhen2();
 		// md5();
 		// dbCount("entrepreneurs");
-		ftmidUtil();
+		// ftmidUtil();
+		// int dbcount = 2085780;
+		getSegmentation("25");
+	}
+
+	public static void getSegmentation(String tmType) throws Exception {
+		File fileWrite = new File("D:/testWrite.txt");
+		fileWrite.createNewFile();
+		OutputStream os = new FileOutputStream(fileWrite);
+
+		Integer dbcount = Integer.valueOf(doFind2(Integer.class,
+				"select count(*) from tTMNEW" + tmType).get(0).toString());
+		System.out.println(dbcount);
+		int count = 0;
+		int pageSize = 10000;
+		for (int pageNo = 1; pageNo < dbcount / pageSize; pageNo++) {
+			String sql = "SELECT TOP " + pageSize + " * FROM tTMNEW" + tmType
+					+ " WHERE (fTMID NOT IN (SELECT TOP " + pageSize * pageNo
+					+ " fTMID FROM tTMNEW" + tmType
+					+ " ORDER BY fTMID)) ORDER BY fTMID";
+			System.out.println(sql);
+			List<TtmNew> list = (ArrayList<TtmNew>) doFind(TtmNew.class, sql);
+			System.out.println("查询完成，正在分析数据...");
+			for (TtmNew ttm : list) {
+				if (ttm.getFtmid().length >= 18) {
+					count++;
+					String outStr = ttm.getFtmids() + "\t"
+							+ ttm.getFtmides() + "\t" + ttm.getFtmchin()
+							+ ttm.getFtmeng()+"\n";
+					System.out.print(outStr);
+					os.write(outStr.getBytes());
+				}
+			}
+			System.out.println("count=" + count);
+		}
+
+		os.flush();
+		os.close();
 	}
 
 	public static void ftmidUtil() {
-		String parament = "ftmeng = 'szskizone'";
+		String parament = "ftmchin = '山火贲'";
 		String tmType = "25";
 		String sql = "select top 10 * from Ttm" + tmType + " where " + parament;
 		System.out.println(sql);
-		List<Ttm> list = (ArrayList<Ttm>) doFind(Ttm.class, sql);
+		List<Ttm> list = (ArrayList<Ttm>) doFind(Ttm.class,
+				"select * from ttmnew25 ");
+		int count = 0;
 		for (Ttm ttm : list) {
-			System.out.println(ttm.getFtmids()+"--"+ttm.getFtmides()+"--"+ttm.getFtmchin()+ttm.getFtmeng()+"--"+ttm.getFsqr1());
+			if (ttm.getFtmid().length >= 18) {
+				count++;
+				System.out.println(ttm.getFtmids() + "--" + ttm.getFtmides()
+						+ "--" + ttm.getFtmchin() + ttm.getFtmeng() + "--"
+						+ ttm.getFsqr1());
+			}
+			// System.out.println(ttm.getFtmid().length);
 		}
+		System.out.println("count=" + count);
 	}
 
 	private static void md5() {

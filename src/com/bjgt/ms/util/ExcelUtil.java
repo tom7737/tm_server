@@ -283,10 +283,10 @@ public class ExcelUtil {
 			// 读Excel
 //			excelTest.readExcel("D:/testRead.xls");
 			// 输出Excel
-			 File fileWrite = new File("D:/testWrite.xls");
-			 fileWrite.createNewFile();
-			 OutputStream os = new FileOutputStream(fileWrite);
-			 ExcelUtil.writeExcel(os);
+//			 File fileWrite = new File("D:/testWrite.xls");
+//			 fileWrite.createNewFile();
+//			 OutputStream os = new FileOutputStream(fileWrite);
+//			 ExcelUtil.writeExcel(os);
 			// 修改Excel
 			// excelTest.modifyExcel(new File(""),new File(""));
 		} catch (Exception e) {
