@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao
+END
+TJpmDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TJpmDao.java
+END
+TtmNewDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TtmNewDao.java
+END
+TspdmGfDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TspdmGfDao.java
+END
+TCommonNameDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TCommonNameDao.java
+END
+TggqhDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TggqhDao.java
+END
+TspdmFgfDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TspdmFgfDao.java
+END
+TtmFlowDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TtmFlowDao.java
+END
+TtmWellDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TtmWellDao.java
+END
+TNumberDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TNumberDao.java
+END
+TtmDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TtmDao.java
+END
+TspdmImageDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/dao/TspdmImageDao.java
+END

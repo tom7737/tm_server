@@ -51,11 +51,33 @@ public class jdbcDao {
 		// lingzhen2();
 		// md5();
 		// dbCount("entrepreneurs");
-		// ftmidUtil();
+//		 ftmidUtil();
 		// int dbcount = 2085780;
-		getSegmentation("25");
+//		getSegmentation("25");
+		yanzheng();
+		
 	}
 
+	public static void yanzheng() throws Exception{
+		List<String> readTxt = FileUtil.ReadTxt("D://test.txt");
+		Map<String, String> map = new HashMap<String,String>();
+		for (int i = 0; i < readTxt.size()/2; i++) {
+			map.put(readTxt.get(i*2), readTxt.get(i*2+1));
+		}
+		Set<String> keySet = map.keySet();
+		for (String string : keySet) {
+//			String v1 = StringUtil.bytesToString(FtmidUtil.ftmidToBytes(string));
+//			String v2= map.get(string).split("\t")[0];
+			String v1 = string;
+			String v2 = FtmidUtil.bytesToString(FtmidUtil.StringToBytes(map.get(string).split("\t")[0]));
+			System.out.println(v1.equals(v2));
+			if(!v1.equals(v2)){
+				System.out.println(v1);
+				System.out.println(v2);
+			}
+		}
+		
+	}
 	public static void getSegmentation(String tmType) throws Exception {
 		File fileWrite = new File("D:/testWrite.txt");
 		fileWrite.createNewFile();

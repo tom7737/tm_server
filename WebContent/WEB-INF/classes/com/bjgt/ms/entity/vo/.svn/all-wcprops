@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/entity/vo
+END
+BaseObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/entity/vo/BaseObject.java
+END
+PageResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/entity/vo/PageResult.java
+END
+Data.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/entity/vo/Data.java
+END
+QueryUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/entity/vo/QueryUtil.java
+END
+SmsResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/entity/vo/SmsResult.java
+END
+TmQueryUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/javafile/!svn/ver/67/server20150507/src/com/bjgt/ms/entity/vo/TmQueryUtil.java
+END

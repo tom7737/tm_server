@@ -91,6 +91,21 @@ public class FtmidUtil {
 				returnvalue += ids8_8(ftmid[14]);
 			}
 			break;
+		case 18:
+			// 分割商标
+			if (ftmid[ftmid.length - 2] == 68) {
+				returnvalue += ids9_1a(ftmid[0]);
+				returnvalue += ids9_2a(ftmid[2]);
+				returnvalue += ids9_3a(ftmid[4]);
+				returnvalue += ids9_4a(ftmid[6]);
+				returnvalue += ids9_5a(ftmid[8]);
+				returnvalue += ids9_6a(ftmid[10]);
+				returnvalue += ids9_7a(ftmid[12]);
+				returnvalue += ids9_8a(ftmid[14]);
+				returnvalue += "A";
+			} else {
+			}
+			break;
 		default:
 			break;
 		}
@@ -988,8 +1003,174 @@ public class FtmidUtil {
 			return 0;
 	}
 
+	private static int ids9_1a(byte b) {
+		// -101
+		return 1;
+	}
+
+	private static int ids9_2a(byte b) {
+		if (b == -66)
+			return 1;
+		else if (b == -67)
+			return 2;
+		else if (b == -68)
+			return 3;
+		else if (b == -69)
+			return 4;
+		else if (b == -70)
+			return 5;
+		else if (b == -71)
+			return 6;
+		else if (b == -72)
+			return 7;
+		else if (b == -73)
+			return 8;
+		else if (b == -74)
+			return 9;
+		else
+			return 0;
+	}
+
+	private static int ids9_3a(byte b) {
+		if (b == -112)
+			return 1;
+		else if (b == -109)
+			return 2;
+		else if (b == -110)
+			return 3;
+		else if (b == -107)
+			return 4;
+		else if (b == -108)
+			return 5;
+		else if (b == -105)
+			return 6;
+		else if (b == -106)
+			return 7;
+		else if (b == -103)
+			return 8;
+		else if (b == -104)
+			return 9;
+		else
+			return 0;
+	}
+
+	private static int ids9_4a(byte b) {
+		if (b == 68)
+			return 1;
+		else if (b == 71)
+			return 2;
+		else if (b == 70)
+			return 3;
+		else if (b == 65)
+			return 4;
+		else if (b == 64)
+			return 5;
+		else if (b == 67)
+			return 6;
+		else if (b == 66)
+			return 7;
+		else if (b == 77)
+			return 8;
+		else if (b == 76)
+			return 9;
+		else
+			return 0;
+	}
+
+	private static int ids9_5a(byte b) {
+		if (b == -93)
+			return 1;
+		else if (b == -96)
+			return 2;
+		else if (b == -95)
+			return 3;
+		else if (b == -90)
+			return 4;
+		else if (b == -89)
+			return 5;
+		else if (b == -92)
+			return 6;
+		else if (b == -91)
+			return 7;
+		else if (b == -86)
+			return 8;
+		else if (b == -85)
+			return 9;
+		else
+			return 0;
+	}
+
+	private static int ids9_6a(byte b) {
+		if (b == 11)
+			return 1;
+		else if (b == 8)
+			return 2;
+		else if (b == 9)
+			return 3;
+		else if (b == 14)
+			return 4;
+		else if (b == 15)
+			return 5;
+		else if (b == 12)
+			return 6;
+		else if (b == 13)
+			return 7;
+		else if (b == 2)
+			return 8;
+		else if (b == 3)
+			return 9;
+		else
+			return 0;
+	}
+
+	private static int ids9_7a(byte b) {
+		if (b == -10)
+			return 1;
+		else if (b == -11)
+			return 2;
+		else if (b == -12)
+			return 3;
+		else if (b == -13)
+			return 4;
+		else if (b == -14)
+			return 5;
+		else if (b == -15)
+			return 6;
+		else if (b == -16)
+			return 7;
+		else if (b == -1)
+			return 8;
+		else if (b == -2)
+			return 9;
+		else
+			return 0;
+	}
+
+	private static int ids9_8a(byte b) {
+		if (b == 120)
+			return 1;
+		else if (b == 123)
+			return 2;
+		else if (b == 122)
+			return 3;
+		else if (b == 125)
+			return 4;
+		else if (b == 124)
+			return 5;
+		else if (b == 127)
+			return 6;
+		else if (b == 126)
+			return 7;
+		else if (b == 113)
+			return 8;
+		else if (b == 112)
+			return 9;
+		else
+			return 0;
+	}
+
 	/**
-	 * 将byte[]的注册号转为字符串的注册号
+	 * 将字符串的注册号转为byte[]的注册号
 	 * 
 	 * @param ftmid
 	 * @return
@@ -1111,6 +1292,29 @@ public class FtmidUtil {
 				returnvalue[13] = -43;
 				returnvalue[14] = ids8_8(Integer.valueOf(ftmid[7]));
 				returnvalue[15] = -41;
+			}
+			break;
+		case 9:
+			if ("A".equals(ftmid[ftmid.length - 1])) {
+				returnvalue[0] = ids9_1a(Integer.valueOf(ftmid[0]));
+				returnvalue[1] = 6;
+				returnvalue[2] = ids9_2a(Integer.valueOf(ftmid[1]));
+				returnvalue[3] = 21;
+				returnvalue[4] = ids9_3a(Integer.valueOf(ftmid[2]));
+				returnvalue[5] = 106;
+				returnvalue[6] = ids9_4a(Integer.valueOf(ftmid[3]));
+				returnvalue[7] = -50;
+				returnvalue[8] = ids9_5a(Integer.valueOf(ftmid[4]));
+				returnvalue[9] = -47;
+				returnvalue[10] = ids9_6a(Integer.valueOf(ftmid[5]));
+				returnvalue[11] = -45;
+				returnvalue[12] = ids9_7a(Integer.valueOf(ftmid[6]));
+				returnvalue[13] = -43;
+				returnvalue[14] = ids9_8a(Integer.valueOf(ftmid[7]));
+				returnvalue[15] = -41;
+				returnvalue[16] = 68;
+				returnvalue[17] = -39;
+			} else {
 			}
 			break;
 		default:
@@ -2025,6 +2229,178 @@ public class FtmidUtil {
 			return -108;
 		else if (b == 0)
 			return -107;
+		return 0;
+	}
+
+	private static byte ids9_1a(int b) {
+		return -101;
+	}
+
+	private static byte ids9_2a(int b) {
+		if (b == 0)
+			return -65;
+		if (b == 1)
+			return -66;
+		else if (b == 2)
+			return -67;
+		else if (b == 3)
+			return -68;
+		else if (b == 4)
+			return -69;
+		else if (b == 5)
+			return -70;
+		else if (b == 6)
+			return -71;
+		else if (b == 7)
+			return -72;
+		else if (b == 8)
+			return -73;
+		else if (b == 9)
+			return -74;
+		return 0;
+	}
+
+	private static byte ids9_3a(int b) {
+		if (b == 0)
+			return -111;
+		if (b == 1)
+			return -112;
+		else if (b == 2)
+			return -109;
+		else if (b == 3)
+			return -110;
+		else if (b == 4)
+			return -107;
+		else if (b == 5)
+			return -108;
+		else if (b == 6)
+			return -105;
+		else if (b == 7)
+			return -106;
+		else if (b == 8)
+			return -103;
+		else if (b == 9)
+			return -104;
+		return 0;
+	}
+
+	private static byte ids9_4a(int b) {
+		if (b == 0)
+			return 69;
+		if (b == 1)
+			return 68;
+		else if (b == 2)
+			return 71;
+		else if (b == 3)
+			return 70;
+		else if (b == 4)
+			return 65;
+		else if (b == 5)
+			return 64;
+		else if (b == 6)
+			return 67;
+		else if (b == 7)
+			return 66;
+		else if (b == 8)
+			return 77;
+		else if (b == 9)
+			return 76;
+		return 0;
+	}
+
+	private static byte ids9_5a(int b) {
+		if (b == 0)
+			return -94;
+		if (b == 1)
+			return -93;
+		else if (b == 2)
+			return -96;
+		else if (b == 3)
+			return -95;
+		else if (b == 4)
+			return -90;
+		else if (b == 5)
+			return -89;
+		else if (b == 6)
+			return -92;
+		else if (b == 7)
+			return -91;
+		else if (b == 8)
+			return -86;
+		else if (b == 9)
+			return -85;
+		return 0;
+	}
+
+	private static byte ids9_6a(int b) {
+		if (b == 0)
+			return 10;
+		if (b == 1)
+			return 11;
+		else if (b == 2)
+			return 8;
+		else if (b == 3)
+			return 9;
+		else if (b == 4)
+			return 14;
+		else if (b == 5)
+			return 15;
+		else if (b == 6)
+			return 12;
+		else if (b == 7)
+			return 13;
+		else if (b == 8)
+			return 2;
+		else if (b == 9)
+			return 3;
+		return 0;
+	}
+
+	private static byte ids9_7a(int b) {
+		if (b == 0)
+			return -9;
+		if (b == 1)
+			return -10;
+		else if (b == 2)
+			return -11;
+		else if (b == 3)
+			return -12;
+		else if (b == 4)
+			return -13;
+		else if (b == 5)
+			return -14;
+		else if (b == 6)
+			return -15;
+		else if (b == 7)
+			return -16;
+		else if (b == 8)
+			return -1;
+		else if (b == 9)
+			return -2;
+		return 0;
+	}
+
+	private static byte ids9_8a(int b) {
+		if (b == 0)
+			return 121;
+		if (b == 1)
+			return 120;
+		else if (b == 2)
+			return 123;
+		else if (b == 3)
+			return 122;
+		else if (b == 4)
+			return 125;
+		else if (b == 5)
+			return 124;
+		else if (b == 6)
+			return 127;
+		else if (b == 7)
+			return 126;
+		else if (b == 8)
+			return 113;
+		else if (b == 9)
+			return 112;
 		return 0;
 	}
 

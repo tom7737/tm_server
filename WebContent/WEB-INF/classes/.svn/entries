@@ -2,7 +2,7 @@
 
 dir
 67
-http://2003server:443/svn/javafile/server20150507/WebContent/WEB-INF/classes
+http://2003server:443/svn/javafile/server20150507/src
 http://2003server:443/svn/javafile
 
 
@@ -32,4 +32,7 @@ svn:special svn:externals svn:needs-lock
 
 
 0
+
+com
+dir
 
