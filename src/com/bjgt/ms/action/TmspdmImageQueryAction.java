@@ -1,18 +1,16 @@
 package com.bjgt.ms.action;
 
-import javax.servlet.ServletOutputStream;
-
+import com.bjgt.ms.action.base.CrudActionSupport;
+import com.bjgt.ms.entity.TspdmImage;
+import com.bjgt.ms.service.TspdmImageManager;
+import com.bjgt.ms.util.Constants;
 import net.sf.json.JSONException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bjgt.ms.action.base.CrudActionSupport;
-import com.bjgt.ms.entity.TspdmImage;
-import com.bjgt.ms.service.TspdmImageManager;
-import com.bjgt.ms.util.Constants;
+import javax.servlet.ServletOutputStream;
 
 /**
  * 商品分类表
@@ -48,6 +46,8 @@ public class TmspdmImageQueryAction extends CrudActionSupport<TspdmImage> {
 		out.write(fimage);
 		out.close();
 	}
+
+	
 
 	/**
 	 * 跳转到分类表界面
