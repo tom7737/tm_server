@@ -38,7 +38,7 @@ public class jdbcDao {
         // int dbcount = 2085780;
 //        getSegmentation("01");
 //		yanzheng();
-        yiyi();
+        yiyi("1611");
 
     }
 
@@ -393,23 +393,23 @@ public class jdbcDao {
         System.out.println(l6 - l1);
     }
 
-    public static void yiyi() throws Exception {
+    public static void yiyi(String fggq) throws Exception {
         Map<Integer, List<Yiyi>> map = new HashMap<Integer, List<Yiyi>>();
 
-        for (int i = 1; i < 2; i++) {
+        for (int i = 1; i < 46; i++) {
             List<Yiyi> list_xxxx = new ArrayList<Yiyi>();
             int len = 2;
             do {
-                String sql = "SELECT  top 1000 " + i + " as type, a.fggq , a.ftmchin , a.ftmeng , a.fsqr1 , a.faddr , a.fdlzz , a.fsysp , a.fsqdate , a.fcsdate , a.fzcq ,a.fzcdate , " +
+                String sql = "SELECT  top 1000 " + i + " as classes, a.fggq , a.ftmchin , a.ftmeng , a.fsqr1 , a.faddr , a.fdlzz , a.fsysp , a.fsqdate , a.fcsdate , a.fzcq ,a.fzcdate , " +
                         "b.fggq as bffggq , b.ftmchin as bfftmchin , b.ftmeng as bfftmeng , b.fsqr1 as bffsqr1 , b.faddr as bffaddr , " +
                         "b.fdlzz as bffdlzz , b.fsysp as bffsysp , b.fsqdate as bffsqdate , b.fcsdate as bffcsdate , b.fzcq as bffzcq , b.fzcdate as bffzcdate  " +
                         "FROM " +
                         "tTM" + (i < 10 ? "0" + i : i) + " a, " +
                         "ttm" + (i < 10 ? "0" + i : i) + " b " +
                         "WHERE " +
-                        "a.fggq = 1611 " +
-                        "AND b.fggq < 1611 " +
-                        "AND b.fggq > 0 " +
+                        "a.fggq =  " + fggq +
+                        " AND b.fggq <  " + fggq +
+                        " AND b.fggq > 0 " +
                         "AND a.fTMCHIN IS NOT NULL " +
                         "AND b.ftmchin IS NOT NULL " +
                         "AND a.fTMCHIN != '' " +
@@ -420,16 +420,18 @@ public class jdbcDao {
                         " and a.fSQR1 != b.fSQR1 " +
                         "AND b.fTMCHIN LIKE  '%'+a.ftmChin + '%'";
                 System.out.println(sql);
+                final long l = System.currentTimeMillis();
                 list_xxxx.addAll((ArrayList<Yiyi>) doFind(Yiyi.class, sql));
+                System.out.println("sql execute time : " + (System.currentTimeMillis() - l));
             } while (list_xxxx.size() < 1000 && len < 5);
             System.out.println(i + "--" + list_xxxx.size());
             map.put(i, list_xxxx);
         }
-        File fileWrite = new File("D:/异议.xls");
+        File fileWrite = new File("D:/异议" + fggq + ".xls");
         fileWrite.createNewFile();
         OutputStream os = new FileOutputStream(fileWrite);
         WritableWorkbook wwb = Workbook.createWorkbook(os);
-        for (int j = 1; j < 2; j++) {
+        for (int j = 1; j < 46; j++) {
             // 导出到EXCEL
             List<Yiyi> list = map.get(j);
             // 创建Excel工作表 指定名称和位置
@@ -486,35 +488,39 @@ public class jdbcDao {
             ws.addCell(label23);
             for (int i = 0; i < list.size(); i++) {
                 Yiyi ttmtmlp = list.get(i);
-                ws.addCell(new Label(0, i + 1, ttmtmlp.getType() + ""));
-                ws.addCell(new Label(1, i + 1, ttmtmlp.getFggq() + ""));
-                ws.addCell(new Label(2, i + 1, ttmtmlp.getFtmchin() + ""));
-                ws.addCell(new Label(3, i + 1, ttmtmlp.getFtmeng() + ""));
-                ws.addCell(new Label(4, i + 1, ttmtmlp.getFsqr1() + ""));
-                ws.addCell(new Label(5, i + 1, ttmtmlp.getFaddr() + ""));
-                ws.addCell(new Label(6, i + 1, ttmtmlp.getFdlzz() + ""));
-                ws.addCell(new Label(7, i + 1, ttmtmlp.getFsysp() + ""));
-                ws.addCell(new Label(8, i + 1, ttmtmlp.getFsqdate() + ""));
-                ws.addCell(new Label(9, i + 1, ttmtmlp.getFcsdate() + ""));
-                ws.addCell(new Label(10, i + 1, ttmtmlp.getFzcq() + ""));
-                ws.addCell(new Label(11, i + 1, ttmtmlp.getFzcdate() + ""));
-                ws.addCell(new Label(12, i + 1, ttmtmlp.getBffggq() + ""));
-                ws.addCell(new Label(13, i + 1, ttmtmlp.getBfftmchin() + ""));
-                ws.addCell(new Label(14, i + 1, ttmtmlp.getBfftmeng() + ""));
-                ws.addCell(new Label(15, i + 1, ttmtmlp.getBffsqr1() + ""));
-                ws.addCell(new Label(16, i + 1, ttmtmlp.getBffaddr() + ""));
-                ws.addCell(new Label(17, i + 1, ttmtmlp.getBffdlzz() + ""));
-                ws.addCell(new Label(18, i + 1, ttmtmlp.getBffsysp() + ""));
-                ws.addCell(new Label(19, i + 1, ttmtmlp.getBffsqdate() + ""));
-                ws.addCell(new Label(20, i + 1, ttmtmlp.getBffcsdate() + ""));
-                ws.addCell(new Label(21, i + 1, ttmtmlp.getBffzcq() + ""));
-                ws.addCell(new Label(22, i + 1, ttmtmlp.getBffzcdate() + ""));
+                ws.addCell(new Label(0, i + 1, null2Empty(ttmtmlp.getClasses())));
+                ws.addCell(new Label(1, i + 1, null2Empty(ttmtmlp.getFggq())));
+                ws.addCell(new Label(2, i + 1, null2Empty(ttmtmlp.getFtmchin())));
+                ws.addCell(new Label(3, i + 1, null2Empty(ttmtmlp.getFtmeng())));
+                ws.addCell(new Label(4, i + 1, null2Empty(ttmtmlp.getFsqr1())));
+                ws.addCell(new Label(5, i + 1, null2Empty(ttmtmlp.getFaddr())));
+                ws.addCell(new Label(6, i + 1, null2Empty(ttmtmlp.getFdlzz())));
+                ws.addCell(new Label(7, i + 1, null2Empty(ttmtmlp.getFsysp())));
+                ws.addCell(new Label(8, i + 1, null2Empty(ttmtmlp.getFsqdate())));
+                ws.addCell(new Label(9, i + 1, null2Empty(ttmtmlp.getFcsdate())));
+                ws.addCell(new Label(10, i + 1, null2Empty(ttmtmlp.getFzcq())));
+                ws.addCell(new Label(11, i + 1, null2Empty(ttmtmlp.getFzcdate())));
+                ws.addCell(new Label(12, i + 1, null2Empty(ttmtmlp.getBffggq())));
+                ws.addCell(new Label(13, i + 1, null2Empty(ttmtmlp.getBfftmchin())));
+                ws.addCell(new Label(14, i + 1, null2Empty(ttmtmlp.getBfftmeng())));
+                ws.addCell(new Label(15, i + 1, null2Empty(ttmtmlp.getBffsqr1())));
+                ws.addCell(new Label(16, i + 1, null2Empty(ttmtmlp.getBffaddr())));
+                ws.addCell(new Label(17, i + 1, null2Empty(ttmtmlp.getBffdlzz())));
+                ws.addCell(new Label(18, i + 1, null2Empty(ttmtmlp.getBffsysp())));
+                ws.addCell(new Label(19, i + 1, null2Empty(ttmtmlp.getBffsqdate())));
+                ws.addCell(new Label(20, i + 1, null2Empty(ttmtmlp.getBffcsdate())));
+                ws.addCell(new Label(21, i + 1, null2Empty(ttmtmlp.getBffzcq())));
+                ws.addCell(new Label(22, i + 1, null2Empty(ttmtmlp.getBffzcdate())));
             }
             System.out.println(list.size());
         }
         wwb.write();
         wwb.close();
 
+    }
+
+    private static String null2Empty(Object str) {
+        return str == null ? "" : str.toString();
     }
 
     public static void liushi() throws Exception {

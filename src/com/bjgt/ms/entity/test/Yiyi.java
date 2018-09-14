@@ -6,7 +6,7 @@ import com.bjgt.ms.entity.vo.BaseObject;
  * Created by tom2 on 2018/9/13.
  */
 public class Yiyi extends BaseObject {
-    private String type;
+    private String classes;
     private Integer fggq;
     private String ftmchin;
     private String ftmeng;
@@ -30,12 +30,12 @@ public class Yiyi extends BaseObject {
     private Integer bffzcq;
     private String bffzcdate;
 
-    public String getType() {
-        return type;
+    public String getClasses() {
+        return classes;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setClasses(String classes) {
+        this.classes = classes;
     }
 
     public Integer getFggq() {
