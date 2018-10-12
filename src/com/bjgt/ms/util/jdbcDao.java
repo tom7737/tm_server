@@ -393,6 +393,15 @@ public class jdbcDao {
         System.out.println(l6 - l1);
     }
 
+    public static String getTopGgq() {
+        final ArrayList arrayList = doFind(String.class, "select top 1 fggq from ttm01 group by fggq order by fggq desc");
+        if (arrayList != null && !arrayList.isEmpty()) {
+            return arrayList.get(0).toString();
+        } else {
+            return null;
+        }
+    }
+
     public static void yiyi(String fggq) throws Exception {
         Map<Integer, List<Yiyi>> map = new HashMap<Integer, List<Yiyi>>();
 
@@ -427,7 +436,7 @@ public class jdbcDao {
             System.out.println(i + "--" + list_xxxx.size());
             map.put(i, list_xxxx);
         }
-        File fileWrite = new File("D:/异议" + fggq + ".xls");
+        File fileWrite = new File("D:/异议数据/异议" + fggq + ".xls");
         fileWrite.createNewFile();
         OutputStream os = new FileOutputStream(fileWrite);
         WritableWorkbook wwb = Workbook.createWorkbook(os);
