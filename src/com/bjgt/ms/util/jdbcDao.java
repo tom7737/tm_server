@@ -394,7 +394,7 @@ public class jdbcDao {
     }
 
     public static String getTopGgq() {
-        final ArrayList arrayList = doFind(String.class, "select top 1 fggq from ttm01 group by fggq order by fggq desc");
+        final ArrayList arrayList = doFind2(String.class, "select top 1 fggq from ttm01 group by fggq order by fggq desc");
         if (arrayList != null && !arrayList.isEmpty()) {
             return arrayList.get(0).toString();
         } else {
@@ -525,6 +525,8 @@ public class jdbcDao {
         }
         wwb.write();
         wwb.close();
+        os.flush();
+        os.close();
 
     }
 

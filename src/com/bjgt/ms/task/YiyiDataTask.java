@@ -24,7 +24,7 @@ public class YiyiDataTask extends TimerTask {
                 System.out.println("=====" + topGgq + "期异议数据已存在==========");
             } else {
                 System.out.println("=====导出" + topGgq + "期异议数据==========");
-                jdbcDao.yiyi("1311");
+                jdbcDao.yiyi(topGgq);
             }
         } catch (Exception e) {
             e.printStackTrace();
