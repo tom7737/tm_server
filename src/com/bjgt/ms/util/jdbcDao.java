@@ -6,6 +6,7 @@ import com.bjgt.ms.entity.test.JoUser;
 import com.bjgt.ms.entity.test.Yiyi;
 import com.bjgt.ms.entity.test.gongsi;
 import com.bjgt.ms.entity.test.ttmtmlp;
+import com.bjgt.ms.task.QueryThread;
 import com.danga.MemCached.MemCachedClient;
 import jxl.Workbook;
 import jxl.write.Label;
@@ -425,16 +426,19 @@ public class jdbcDao {
                         "AND b.ftmchin != ''  " +
                         "AND a.ftmchin != '图形'  " +
                         "and a.fTMCHIN != b.ftmchin " +
-                        "and len(a.fTMCHIN) =  " + (len++) +
+                        " and len(a.fTMCHIN) =  " + (len++) +
+                        " and ( len(b.fTMCHIN) =  " + (len) +
+                        " or  len(b.fTMCHIN) =  " + (len + 1) + " ) " +
                         " and a.fSQR1 != b.fSQR1 " +
                         "AND b.fTMCHIN LIKE  '%'+a.ftmChin + '%'";
-                System.out.println(sql);
-                final long l = System.currentTimeMillis();
-                list_xxxx.addAll((ArrayList<Yiyi>) doFind(Yiyi.class, sql));
-                System.out.println("sql execute time : " + (System.currentTimeMillis() - l));
-            } while (list_xxxx.size() < 1000 && len < 5);
-            System.out.println(i + "--" + list_xxxx.size());
-            map.put(i, list_xxxx);
+                QueryThread.fixedThreadPool.execute(new QueryThread(sql, i, map));
+            } while (list_xxxx.size() < 1000 && len < 4);
+//            System.out.println(i + "--" + list_xxxx.size());
+//            map.put(i, list_xxxx);
+        }
+        int x = 0;
+        while (map.size() < 45 && ++x < 60) {
+            Thread.sleep(60000L);
         }
         File fileWrite = new File("D:/异议数据/异议" + fggq + ".xls");
         fileWrite.createNewFile();
@@ -443,6 +447,8 @@ public class jdbcDao {
         for (int j = 1; j < 46; j++) {
             // 导出到EXCEL
             List<Yiyi> list = map.get(j);
+            if (list == null || list.isEmpty())
+                continue;
             // 创建Excel工作表 指定名称和位置
             WritableSheet ws = wwb.createSheet(j + "", j - 1);
 
@@ -1030,7 +1036,7 @@ public class jdbcDao {
      * @param str_sql
      * @return
      */
-    private static ArrayList doFind(Class c, String str_sql) {
+    public static ArrayList doFind(Class c, String str_sql) {
         ArrayList all = new ArrayList();
         Connection con = null;
         PreparedStatement st = null;
